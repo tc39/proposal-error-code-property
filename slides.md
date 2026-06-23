@@ -3,7 +3,7 @@ theme: default
 title: "TC39 Proposal: Error code Property"
 info: |
   A proposal to add a standardized `code` property to ECMAScript Error objects.
-  Stage 0 — Pre-proposal
+  Stage 1 — Seeking Stage 2 or 2.7
 class: text-center
 ---
 
@@ -11,7 +11,7 @@ class: text-center
 
 A TC39 Proposal
 
-Stage 1?
+Stage 2 / 2.7?
 
 James M Snell
 
@@ -209,7 +209,7 @@ DOMException has `Error` in its prototype chain and a legacy numeric `.code` —
 <v-click>
 
 - `code` is only installed when passed via the constructor options bag — it is never set by default
-- DOMException's constructor does not accept an options bag, so `InstallErrorCode` is never invoked — no shadowing occurs
+- DOMException's constructor does not accept an options bag, so `InstallErrorOwnProperties` is never invoked — no shadowing occurs
 - This proposal does **not** modify `DOMException` — not web-breaking
 - A single web platform type's legacy use of a property name should not constrain language-level improvements
 
@@ -225,21 +225,23 @@ The `.code` property name overlap already exists today — Node.js, Deno, Bun, a
 
 # Spec Changes
 
-A single new abstract operation, called from all Error constructors
+Replaces `InstallErrorCause` with a consolidated `InstallErrorOwnProperties`
 
 ```
-InstallErrorCode ( O, options )
-  1. If options is an Object and
-     ? HasProperty(options, "code") is true, then
-    a. Let code be ? Get(options, "code").
-    b. Perform CreateNonEnumerableDataPropertyOrThrow(
-         O, "code", code).
+InstallErrorOwnProperties ( O, options )
+  1. If options is an Object, then
+    a. If ? HasProperty(options, "cause") is true, then
+      i.  Let cause be ? Get(options, "cause").
+      ii. Perform CreateNonEnumerableDataPropertyOrThrow(
+            O, "cause", cause).
+    b. If ? HasProperty(options, "code") is true, then
+      i.  Let code be ? Get(options, "code").
+      ii. Perform CreateNonEnumerableDataPropertyOrThrow(
+            O, "code", code).
   2. Return unused.
 ```
 
-Added to: `Error()`, `NativeError()`, `AggregateError()`, `SuppressedError()`
-
-Identical structure to `InstallErrorCause`.
+Replaces `InstallErrorCause` in: `Error()`, `NativeError()`, `AggregateError()`, `SuppressedError()`
 
 ---
 
@@ -278,13 +280,11 @@ class: text-center
 `code` Property for Error Objects
 
 <v-clicks>
-Asking for Stage 1?
+Asking for Stage 2?
 
-How about Stage 2?
-
-Or maybe even... Stage 2.7?
+How about Stage 2.7?
 </v-clicks>
 
 <br>
 
-[Proposal](https://github.com/jasnell/proposal-error-code-property) | [Spec Text](https://github.com/jasnell/proposal-error-code-property/blob/main/spec.emu)
+[Proposal](https://github.com/tc39/proposal-error-code-property) | [Spec Text](https://github.com/tc39/proposal-error-code-property/blob/main/spec.emu)
