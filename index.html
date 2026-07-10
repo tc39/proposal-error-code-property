@@ -1,17 +1,19 @@
 <!doctype html>
-<head><meta name="viewport" content="width=device-width, initial-scale=1"><meta charset="utf-8"><meta property="og:image" content="https://tc39.es/ecmarkup/ecma-logo.png"><meta property="og:title" content="Proposal Title Goes Here"><meta property="og:description" content="This is an emu-clause
-  This is an algorithm:
+<head><meta name="viewport" content="width=device-width, initial-scale=1"><meta charset="utf-8"><meta property="og:image" content="https://tc39.es/ecmarkup/ecma-logo.png"><meta property="og:title" content="Error code property"><meta property="og:description" content="Error Objects
+
   
-    1. Let _proposal_ be *undefined*.
-    1. If IsAccepted(_proposal_) is *true*, then
-      1. Let _stage_ be *0*ℤ.
-    1. Else,
-      1. Let _stage_ be *-1*ℤ.
-    1. Return ? ToString(_stage_).">
+    The Error Constructor
+
+    
+      Error ( _message_ [ , _options_ ] )
+      This function performs the following steps when called:
+      
+        1. If NewTarget is *undefined*, let _newTarget_ be the active function object; else let _newTarget_ be NewTarget.
+        1. Let">
 <link rel="stylesheet" href="./spec.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
 <script src="./spec.js"></script>
-<title>Proposal Title Goes Here</title><script>'use strict';
+<title>Error code property</title><script>'use strict';
 let sdoBox = {
   init() {
     this.$alternativeId = null;
@@ -874,7 +876,7 @@ let referencePane = {
     this.$pane.appendChild(this.$tableContainer);
 
     if (menu != null) {
-      menu.$specContainer.after(this.$container);
+      menu.$specContainer.appendChild(this.$container);
     }
   },
 
@@ -1206,9 +1208,6 @@ function doShortcut(e) {
     document.documentElement.classList.toggle('show-ao-annotations');
   } else if (e.key === '?') {
     document.getElementById('shortcuts-help').classList.toggle('active');
-  } else if (e.key === ';') {
-    let el = document.getElementById('bd75b99add5f');
-    if (el != null) el.remove();
   }
 }
 
@@ -1626,7 +1625,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 let sdoMap = JSON.parse(`{}`);
-let biblio = JSON.parse(`{"refsByClause":{"sec-demo-clause":["_ref_0"]},"entries":[{"type":"clause","id":"sec-demo-clause","titleHTML":"This is an emu-clause","number":"1"},{"type":"op","aoid":"IsAccepted","refId":"sec-is-accepted"},{"type":"clause","id":"sec-is-accepted","title":"IsAccepted ( proposal )","titleHTML":"IsAccepted ( <var>proposal</var> )","number":"2","referencingIds":["_ref_0"]},{"type":"clause","id":"sec-copyright-and-software-license","title":"Copyright & Software License","titleHTML":"Copyright &amp; Software License","number":"A"}]}`);
+let biblio = JSON.parse(`{"refsByClause":{"sec-error-message":["_ref_0"],"sec-nativeerror":["_ref_1"],"sec-aggregate-error":["_ref_2"],"sec-suppressed-error":["_ref_3"]},"entries":[{"type":"clause","id":"sec-error-message","title":"Error ( message [ , options ] )","titleHTML":"Error ( <var>message</var> [ , <var>options</var> ] )","number":"1.1.1"},{"type":"clause","id":"sec-error-constructor","titleHTML":"The Error Constructor","number":"1.1"},{"type":"clause","id":"sec-nativeerror","title":"NativeError ( message [ , options ] )","titleHTML":"<var>NativeError</var> ( <var>message</var> [ , <var>options</var> ] )","number":"1.2.1.1"},{"type":"clause","id":"sec-nativeerror-constructors","title":"The NativeError Constructors","titleHTML":"The <var>NativeError</var> Constructors","number":"1.2.1"},{"type":"clause","id":"sec-nativeerror-object-structure","title":"NativeError Object Structure","titleHTML":"<var>NativeError</var> Object Structure","number":"1.2"},{"type":"clause","id":"sec-aggregate-error","title":"AggregateError ( errors, message [ , options ] )","titleHTML":"AggregateError ( <var>errors</var>, <var>message</var> [ , <var>options</var> ] )","number":"1.3.1.1"},{"type":"clause","id":"sec-aggregate-error-constructor","titleHTML":"The AggregateError Constructor","number":"1.3.1"},{"type":"clause","id":"sec-aggregate-error-objects","titleHTML":"AggregateError Objects","number":"1.3"},{"type":"clause","id":"sec-suppressed-error","title":"SuppressedError ( error, suppressed, message [ , options ] )","titleHTML":"SuppressedError ( <var>error</var>, <var>suppressed</var>, <var>message</var> [ , <var>options</var> ] )","number":"1.4.1.1"},{"type":"clause","id":"sec-suppressed-error-constructor","titleHTML":"The SuppressedError Constructor","number":"1.4.1"},{"type":"clause","id":"sec-suppressed-error-objects","titleHTML":"SuppressedError Objects","number":"1.4"},{"type":"op","aoid":"InstallErrorOwnProperties","refId":"sec-installerrorownproperties"},{"type":"clause","id":"sec-installerrorownproperties","title":"InstallErrorOwnProperties ( O, options )","titleHTML":"<ins>InstallErrorOwnProperties ( <var>O</var>, <var>options</var> )</ins>","number":"1.5.1","referencingIds":["_ref_0","_ref_1","_ref_2","_ref_3"]},{"type":"clause","id":"sec-error-objects-abstract-operations","titleHTML":"Abstract Operations for Error Objects","number":"1.5"},{"type":"clause","id":"sec-error-objects","titleHTML":"Error Objects","number":"1"},{"type":"clause","id":"sec-copyright-and-software-license","title":"Copyright & Software License","titleHTML":"Copyright &amp; Software License","number":"A"}]}`);
 ;let usesMultipage = false</script><style>:root {
   --foreground-color: #111;
   --background-color: #fff;
@@ -1916,6 +1915,23 @@ h1.shortname { display: none; }
 
 body.oldtoc {
   margin: 0 auto;
+}
+
+#metadata-block {
+  margin: 4em 0;
+  padding: 10px;
+  border: 1px solid #ee8421;
+}
+
+#metadata-block h1 {
+  font-size: 1.5em;
+  margin-top: 0;
+}
+
+#metadata-block > ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 span[aria-hidden='true'] {
@@ -2239,7 +2255,7 @@ emu-oneof {
 }
 
 emu-nt {
-  display: inline-block;
+  display: inline;
   font-style: italic;
   white-space: nowrap;
   text-indent: 0;
@@ -2579,7 +2595,7 @@ table.real-table th {
 }
 
 emu-table td {
-  background: transparent;
+  background: var(--background-color);
 }
 
 td[colspan]:not([colspan="1"]), th[colspan]:not([colspan="1"]) {
@@ -2686,7 +2702,7 @@ tr.del > td {
   height: 100vh;
   max-width: 500px;
   box-sizing: border-box;
-  background: var(--control-background-color);
+  background-color: var(--control-background-color);
   overflow: hidden;
   transition: opacity 0.1s linear;
   padding: 0 5px;
@@ -3127,7 +3143,7 @@ li.menu-search-result-term::before {
 
 .toolbox::after {
   border-color: var(--toolbox-tail-background-outside-color);
-  border-top-color: var(--control-border-color);
+  border-top-color: var(--control-background-color);
   border-width: 10px;
   margin-left: -10px;
 }
@@ -3144,7 +3160,7 @@ li.menu-search-result-term::before {
   left: 0;
   right: 0;
   display: none;
-  background: var(--control-background-color);
+  background-color: var(--control-background-color);
   z-index: 1;
 }
 
@@ -3185,17 +3201,6 @@ li.menu-search-result-term::before {
   padding-right: 5px;
 }
 
-emu-normative-optional {
-  display: block;
-}
-
-emu-normative-optional::before {
-  display: block;
-  color: var(--attributes-tag-foreground-color);
-  content: "NORMATIVE OPTIONAL";
-}
-
-emu-normative-optional,
 [normative-optional],
 [deprecated],
 [legacy] {
@@ -3228,7 +3233,7 @@ emu-normative-optional,
   outline: solid 10000px var(--control-dialog-fade-color);
   border-radius: 5px;
   border-width: 1px 1px 0 1px;
-  background: var(--control-background-color);
+  background-color: var(--control-background-color);
   display: none;
 }
 
@@ -3256,6 +3261,7 @@ emu-normative-optional,
 
 #ecma-logo {
   background: var(--figure-background);
+  width: 500px;
 }
 </style><style>@media print {
 @font-face {
@@ -3329,6 +3335,7 @@ emu-normative-optional,
 
 :root {
   --page-number-style: decimal;
+  -prince-change-line-breaks-for-pagination: yes; /* see https://www.princexml.com/doc/prince-for-books/#pagination-fine-tuning */
 }
 
 @page {
@@ -3337,16 +3344,16 @@ emu-normative-optional,
   margin-bottom: 20mm;
   margin-inside: 19mm;
   margin-outside: 13mm;
-  -prince-page-fill: prefer-fill;
+  -prince-page-fill: prefer-balance; /* see https://www.princexml.com/doc/prince-for-books/#the-property--prince-page-fill */
 
-  /* Uncomment when producing WIP versions of final standards */
+  /* Uncomment when producing WIP versions of final standards, see https://www.princexml.com/doc/paged/#page-regions */
   /*
   @prince-overlay {
     color: rgba(0,0,0,0.15);
-    content: "WORK IN PROGRESS";
+    content: "DRAFT";
     font-family: Arial;
     font-weight: bolder;
-    font-size: 100pt;
+    font-size: 200pt;
     transform: rotate(-60deg);
   }
   */
@@ -3456,7 +3463,7 @@ body {
   line-height: 1.15;
 }
 
-h1, h2, h3, h4, h5, h6 { -prince-bookmark-level: none }
+h1, h2, h3, h4, h5, h6 { -prince-bookmark-level: none } /* see https://www.princexml.com/doc/prince-output/#pdf-bookmarks */
 
 .copyright-notice + h1.title {
   break-before: recto;
@@ -3476,13 +3483,22 @@ p {
   text-wrap: pretty;
   overflow-wrap: break-word;
   hyphens: auto;
-  orphans: 2;
-  widows: 2;
+  orphans: 2, -prince-prefer 3; /* see https://www.princexml.com/doc/prince-for-books/#pagination-goals */
+  widows: 2, -prince-prefer 3;
 }
 
 h1 {
   text-wrap: balance;
   line-height: 1.4;
+}
+
+pre:has(> code) {
+  margin: 0;
+}
+
+p + pre:has(+ p) {
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 emu-alg {
@@ -3523,14 +3539,6 @@ emu-alg ol li:last-child {
   break-after: initial; /* it's okay to break after the last item in a list, even if it's also the first item in the list */
 }
 
-emu-normative-optional emu-clause[id] {
-  margin-top: 0;
-}
-
-emu-normative-optional emu-alg > ol {
-  margin-bottom: 0;
-}
-
 emu-note {
   gap: initial;
   justify-content: space-between;
@@ -3539,6 +3547,10 @@ emu-note {
 emu-note .note {
   font-size: 9pt;
   min-width: 4.5em;
+}
+
+emu-note table td {
+  background-color: white;
 }
 
 emu-note p,
@@ -3569,7 +3581,6 @@ emu-intro, emu-clause, emu-annex {
 }
 
 emu-clause p:first-of-type {
-  margin-bottom: 0;
   orphans: 3;
 }
 
@@ -3689,7 +3700,7 @@ caption, table > figcaption {
 }
 
 caption {
-  -prince-caption-page: first;
+  -prince-caption-page: first; /* see https://www.princexml.com/doc/css-props/#prop-prince-caption-page */
 }
 
 /* do not break inside of small tables */
@@ -3728,6 +3739,11 @@ emu-figure img {
   margin-top: 1ex;
   max-width: 100%;
   height: auto;
+}
+
+.attributes-tag {
+  break-before: avoid-page;
+  break-after: avoid-page;
 }
 
 #spec-container {
@@ -3825,8 +3841,8 @@ emu-annex > h1 .secnum {
   border: 1px solid black;
   padding: 1em;
   page: copyright;
-  page-break-before: always;
-  page-break-after: always;
+  break-before: page;
+  break-after: page;
 }
 
 .secnum {
@@ -3913,12 +3929,12 @@ p.ECMAaddress {
     @media print {
       @page :left {
         @bottom-right {
-          content: '© Ecma International 2025';
+          content: '© Ecma International 2026';
         }
       }
       @page :right {
         @bottom-left {
-          content: '© Ecma International 2025';
+          content: '© Ecma International 2026';
         }
       }
       @page :first {
@@ -3954,23 +3970,78 @@ p.ECMAaddress {
 </ul></div><div id="menu-toggle"><svg xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%; stroke:currentColor" viewBox="0 0 120 120" width="54" height="54">
       <title>Menu</title>
       <path stroke-width="10" stroke-linecap="round" d="M30,60 h60  M30,30 m0,5 h60  M30,90 m0,-5 h60"></path>
-    </svg></div><div id="menu-spacer" class="menu-spacer"></div><div id="menu"><div id="menu-search"><input type="text" id="menu-search-box" placeholder="Search..."><div id="menu-search-results" class="inactive"></div></div><div id="menu-pins"><div class="menu-pane-header">Pins<button class="unpin-all">clear</button></div><ul id="menu-pins-list"></ul></div><div class="menu-pane-header">Table of Contents</div><div id="menu-toc"><ol class="toc"><li><span class="item-toggle-none"></span><a href="#sec-demo-clause" title="This is an emu-clause"><span class="secnum">1</span> This is an emu-clause</a></li><li><span class="item-toggle-none"></span><a href="#sec-is-accepted" title="IsAccepted ( proposal )"><span class="secnum">2</span> IsAccepted ( <var>proposal</var> )</a></li><li><span class="item-toggle-none"></span><a href="#sec-copyright-and-software-license" title="Copyright &amp; Software License">Copyright &amp; Software License</a></li></ol></div></div><div id="spec-container"><h1 class="version">Stage -1 Draft / June 2, 2025</h1><h1 class="title">Proposal Title Goes Here</h1>
+    </svg></div><div id="menu-spacer" class="menu-spacer"></div><div id="menu"><div id="menu-search"><input type="text" id="menu-search-box" placeholder="Search..."><div id="menu-search-results" class="inactive"></div></div><div id="menu-pins"><div class="menu-pane-header">Pins<button class="unpin-all">clear</button></div><ul id="menu-pins-list"></ul></div><div class="menu-pane-header">Table of Contents</div><div id="menu-toc"><ol class="toc"><li><span class="item-toggle">+</span><a href="#sec-error-objects" title="Error Objects"><span class="secnum">1</span> Error Objects</a><ol class="toc"><li><span class="item-toggle">+</span><a href="#sec-error-constructor" title="The Error Constructor"><span class="secnum">1.1</span> The Error Constructor</a><ol class="toc"><li><span class="item-toggle-none"></span><a href="#sec-error-message" title="Error ( message [ , options ] )"><span class="secnum">1.1.1</span> Error ( <var>message</var> [ , <var>options</var> ] )</a></li></ol></li><li><span class="item-toggle">+</span><a href="#sec-nativeerror-object-structure" title="NativeError Object Structure"><span class="secnum">1.2</span> <var>NativeError</var> Object Structure</a><ol class="toc"><li><span class="item-toggle">+</span><a href="#sec-nativeerror-constructors" title="The NativeError Constructors"><span class="secnum">1.2.1</span> The <var>NativeError</var> Constructors</a><ol class="toc"><li><span class="item-toggle-none"></span><a href="#sec-nativeerror" title="NativeError ( message [ , options ] )"><span class="secnum">1.2.1.1</span> <var>NativeError</var> ( <var>message</var> [ , <var>options</var> ] )</a></li></ol></li></ol></li><li><span class="item-toggle">+</span><a href="#sec-aggregate-error-objects" title="AggregateError Objects"><span class="secnum">1.3</span> AggregateError Objects</a><ol class="toc"><li><span class="item-toggle">+</span><a href="#sec-aggregate-error-constructor" title="The AggregateError Constructor"><span class="secnum">1.3.1</span> The AggregateError Constructor</a><ol class="toc"><li><span class="item-toggle-none"></span><a href="#sec-aggregate-error" title="AggregateError ( errors, message [ , options ] )"><span class="secnum">1.3.1.1</span> AggregateError ( <var>errors</var>, <var>message</var> [ , <var>options</var> ] )</a></li></ol></li></ol></li><li><span class="item-toggle">+</span><a href="#sec-suppressed-error-objects" title="SuppressedError Objects"><span class="secnum">1.4</span> SuppressedError Objects</a><ol class="toc"><li><span class="item-toggle">+</span><a href="#sec-suppressed-error-constructor" title="The SuppressedError Constructor"><span class="secnum">1.4.1</span> The SuppressedError Constructor</a><ol class="toc"><li><span class="item-toggle-none"></span><a href="#sec-suppressed-error" title="SuppressedError ( error, suppressed, message [ , options ] )"><span class="secnum">1.4.1.1</span> SuppressedError ( <var>error</var>, <var>suppressed</var>, <var>message</var> [ , <var>options</var> ] )</a></li></ol></li></ol></li><li><span class="item-toggle">+</span><a href="#sec-error-objects-abstract-operations" title="Abstract Operations for Error Objects"><span class="secnum">1.5</span> Abstract Operations for Error Objects</a><ol class="toc"><li><span class="item-toggle-none"></span><a href="#sec-installerrorownproperties" title="InstallErrorOwnProperties ( O, options )"><span class="secnum">1.5.1</span> <ins>InstallErrorOwnProperties ( <var>O</var>, <var>options</var> )</ins></a></li></ol></li></ol></li><li><span class="item-toggle-none"></span><a href="#sec-copyright-and-software-license" title="Copyright &amp; Software License">Copyright &amp; Software License</a></li></ol></div></div><div id="spec-container"><h1 class="version">Stage 1 Draft / July 10, 2026</h1><h1 class="title">Error code property</h1>
 
-<emu-clause id="sec-demo-clause">
-  <h1><span class="secnum">1</span> This is an emu-clause</h1>
-  <p>This is an algorithm:</p>
-  <emu-alg><ol><li>Let <var>proposal</var> be <emu-val>undefined</emu-val>.</li><li>If <emu-xref aoid="IsAccepted" id="_ref_0"><a href="#sec-is-accepted">IsAccepted</a></emu-xref>(<var>proposal</var>) is <emu-val>true</emu-val>, then<ol><li>Let <var>stage</var> be <emu-val>0</emu-val><sub>ℤ</sub>.</li></ol></li><li>Else,<ol><li>Let <var>stage</var> be <emu-val>-1</emu-val><sub>ℤ</sub>.</li></ol></li><li>Return ?&nbsp;<emu-xref aoid="ToString"><a href="https://tc39.es/ecma262/#sec-tostring">ToString</a></emu-xref>(<var>stage</var>).</li></ol></emu-alg>
-</emu-clause>
+<emu-clause id="sec-error-objects">
+  <h1><span class="secnum">1</span> Error Objects</h1>
 
-<emu-clause id="sec-is-accepted" type="abstract operation" aoid="IsAccepted">
-  <h1><span class="secnum">2</span> IsAccepted ( <var>proposal</var> )</h1>
-  <p>The abstract operation IsAccepted takes argument <var>proposal</var> (an <emu-xref href="#sec-ecmascript-language-types"><a href="https://tc39.es/ecma262/#sec-ecmascript-language-types">ECMAScript language value</a></emu-xref>) and returns a Boolean. Tells you if the proposal was accepted It performs the following steps when called:</p>
-  <emu-alg><ol><li>If <var>proposal</var> <emu-xref href="#sec-ecmascript-language-types-string-type"><a href="https://tc39.es/ecma262/#sec-ecmascript-language-types-string-type">is not a String</a></emu-xref>, or is not accepted, return <emu-val>false</emu-val>.</li><li>Return <emu-val>true</emu-val>.</li></ol></emu-alg>
+  <emu-clause id="sec-error-constructor">
+    <h1><span class="secnum">1.1</span> The Error Constructor</h1>
+
+    <emu-clause id="sec-error-message">
+      <h1><span class="secnum">1.1.1</span> Error ( <var>message</var> [ , <var>options</var> ] )</h1>
+      <p>This function performs the following steps when called:</p>
+      <emu-alg><ol><li>If NewTarget is <emu-val>undefined</emu-val>, let <var>newTarget</var> be the <emu-xref href="#active-function-object"><a href="https://tc39.es/ecma262/#active-function-object">active function object</a></emu-xref>; else let <var>newTarget</var> be NewTarget.</li><li>Let <var>O</var> be ?&nbsp;<emu-xref aoid="OrdinaryCreateFromConstructor"><a href="https://tc39.es/ecma262/#sec-ordinarycreatefromconstructor">OrdinaryCreateFromConstructor</a></emu-xref>(<var>newTarget</var>, <emu-val>"%Error.prototype%"</emu-val>, « <var class="field">[[ErrorData]]</var> »).</li><li>If <var>message</var> is not <emu-val>undefined</emu-val>, then<ol><li>Let <var>msg</var> be ?&nbsp;<emu-xref aoid="ToString"><a href="https://tc39.es/ecma262/#sec-tostring">ToString</a></emu-xref>(<var>message</var>).</li><li>Perform <emu-xref aoid="CreateNonEnumerableDataPropertyOrThrow"><a href="https://tc39.es/ecma262/#sec-createnonenumerabledatapropertyorthrow">CreateNonEnumerableDataPropertyOrThrow</a></emu-xref>(<var>O</var>, <emu-val>"message"</emu-val>, <var>msg</var>).</li></ol></li><li><del>Perform ?&nbsp;<emu-xref aoid="InstallErrorCause"><a href="https://tc39.es/ecma262/#sec-installerrorcause">InstallErrorCause</a></emu-xref>(<var>O</var>, <var>options</var>).</del></li><li><ins>Perform ?&nbsp;<emu-xref aoid="InstallErrorOwnProperties" id="_ref_0"><a href="#sec-installerrorownproperties">InstallErrorOwnProperties</a></emu-xref>(<var>O</var>, <var>options</var>).</ins></li><li>Return <var>O</var>.</li></ol></emu-alg>
+    </emu-clause>
+  </emu-clause>
+
+  <emu-clause id="sec-nativeerror-object-structure">
+    <h1><span class="secnum">1.2</span> <var>NativeError</var> Object Structure</h1>
+
+    <emu-clause id="sec-nativeerror-constructors">
+      <h1><span class="secnum">1.2.1</span> The <var>NativeError</var> Constructors</h1>
+
+      <emu-clause id="sec-nativeerror">
+        <h1><span class="secnum">1.2.1.1</span> <var>NativeError</var> ( <var>message</var> [ , <var>options</var> ] )</h1>
+        <p>Each <var>NativeError</var> function performs the following steps when called:</p>
+        <emu-alg><ol><li>If NewTarget is <emu-val>undefined</emu-val>, let <var>newTarget</var> be the <emu-xref href="#active-function-object"><a href="https://tc39.es/ecma262/#active-function-object">active function object</a></emu-xref>; else let <var>newTarget</var> be NewTarget.</li><li>Let <var>O</var> be ?&nbsp;<emu-xref aoid="OrdinaryCreateFromConstructor"><a href="https://tc39.es/ecma262/#sec-ordinarycreatefromconstructor">OrdinaryCreateFromConstructor</a></emu-xref>(<var>newTarget</var>, <code>"%<var>NativeError</var>.prototype%"</code>, « <var class="field">[[ErrorData]]</var> »).</li><li>If <var>message</var> is not <emu-val>undefined</emu-val>, then<ol><li>Let <var>msg</var> be ?&nbsp;<emu-xref aoid="ToString"><a href="https://tc39.es/ecma262/#sec-tostring">ToString</a></emu-xref>(<var>message</var>).</li><li>Perform <emu-xref aoid="CreateNonEnumerableDataPropertyOrThrow"><a href="https://tc39.es/ecma262/#sec-createnonenumerabledatapropertyorthrow">CreateNonEnumerableDataPropertyOrThrow</a></emu-xref>(<var>O</var>, <emu-val>"message"</emu-val>, <var>msg</var>).</li></ol></li><li><del>Perform ?&nbsp;<emu-xref aoid="InstallErrorCause"><a href="https://tc39.es/ecma262/#sec-installerrorcause">InstallErrorCause</a></emu-xref>(<var>O</var>, <var>options</var>).</del></li><li><ins>Perform ?&nbsp;<emu-xref aoid="InstallErrorOwnProperties" id="_ref_1"><a href="#sec-installerrorownproperties">InstallErrorOwnProperties</a></emu-xref>(<var>O</var>, <var>options</var>).</ins></li><li>Return <var>O</var>.</li></ol></emu-alg>
+      </emu-clause>
+    </emu-clause>
+  </emu-clause>
+
+  <emu-clause id="sec-aggregate-error-objects">
+    <h1><span class="secnum">1.3</span> AggregateError Objects</h1>
+
+    <emu-clause id="sec-aggregate-error-constructor">
+      <h1><span class="secnum">1.3.1</span> The AggregateError Constructor</h1>
+
+      <emu-clause id="sec-aggregate-error">
+        <h1><span class="secnum">1.3.1.1</span> AggregateError ( <var>errors</var>, <var>message</var> [ , <var>options</var> ] )</h1>
+        <p>This function performs the following steps when called:</p>
+        <emu-alg><ol><li>If NewTarget is <emu-val>undefined</emu-val>, let <var>newTarget</var> be the <emu-xref href="#active-function-object"><a href="https://tc39.es/ecma262/#active-function-object">active function object</a></emu-xref>; else let <var>newTarget</var> be NewTarget.</li><li>Let <var>O</var> be ?&nbsp;<emu-xref aoid="OrdinaryCreateFromConstructor"><a href="https://tc39.es/ecma262/#sec-ordinarycreatefromconstructor">OrdinaryCreateFromConstructor</a></emu-xref>(<var>newTarget</var>, <emu-val>"%AggregateError.prototype%"</emu-val>, « <var class="field">[[ErrorData]]</var> »).</li><li>If <var>message</var> is not <emu-val>undefined</emu-val>, then<ol><li>Let <var>msg</var> be ?&nbsp;<emu-xref aoid="ToString"><a href="https://tc39.es/ecma262/#sec-tostring">ToString</a></emu-xref>(<var>message</var>).</li><li>Perform <emu-xref aoid="CreateNonEnumerableDataPropertyOrThrow"><a href="https://tc39.es/ecma262/#sec-createnonenumerabledatapropertyorthrow">CreateNonEnumerableDataPropertyOrThrow</a></emu-xref>(<var>O</var>, <emu-val>"message"</emu-val>, <var>msg</var>).</li></ol></li><li><del>Perform ?&nbsp;<emu-xref aoid="InstallErrorCause"><a href="https://tc39.es/ecma262/#sec-installerrorcause">InstallErrorCause</a></emu-xref>(<var>O</var>, <var>options</var>).</del></li><li><ins>Perform ?&nbsp;<emu-xref aoid="InstallErrorOwnProperties" id="_ref_2"><a href="#sec-installerrorownproperties">InstallErrorOwnProperties</a></emu-xref>(<var>O</var>, <var>options</var>).</ins></li><li>Let <var>errorsList</var> be ?&nbsp;<emu-xref aoid="IteratorToList"><a href="https://tc39.es/ecma262/#sec-iteratortolist">IteratorToList</a></emu-xref>(? <emu-xref aoid="GetIterator"><a href="https://tc39.es/ecma262/#sec-getiterator">GetIterator</a></emu-xref>(<var>errors</var>, <emu-const>sync</emu-const>)).</li><li>Perform !&nbsp;<emu-xref aoid="DefinePropertyOrThrow"><a href="https://tc39.es/ecma262/#sec-definepropertyorthrow">DefinePropertyOrThrow</a></emu-xref>(<var>O</var>, <emu-val>"errors"</emu-val>, PropertyDescriptor { <var class="field">[[Configurable]]</var>: <emu-val>true</emu-val>, <var class="field">[[Enumerable]]</var>: <emu-val>false</emu-val>, <var class="field">[[Writable]]</var>: <emu-val>true</emu-val>, <var class="field">[[Value]]</var>: <emu-xref aoid="CreateArrayFromList"><a href="https://tc39.es/ecma262/#sec-createarrayfromlist">CreateArrayFromList</a></emu-xref>(<var>errorsList</var>)&nbsp;}).</li><li>Return <var>O</var>.</li></ol></emu-alg>
+      </emu-clause>
+    </emu-clause>
+  </emu-clause>
+
+  <emu-clause id="sec-suppressed-error-objects">
+    <h1><span class="secnum">1.4</span> SuppressedError Objects</h1>
+
+    <emu-clause id="sec-suppressed-error-constructor">
+      <h1><span class="secnum">1.4.1</span> The SuppressedError Constructor</h1>
+
+      <emu-clause id="sec-suppressed-error">
+        <h1><span class="secnum">1.4.1.1</span> SuppressedError ( <var>error</var>, <var>suppressed</var>, <var>message</var> [ , <var>options</var> ] )</h1>
+        <p>This function performs the following steps when called:</p>
+        <emu-alg><ol><li>If NewTarget is <emu-val>undefined</emu-val>, let <var>newTarget</var> be the <emu-xref href="#active-function-object"><a href="https://tc39.es/ecma262/#active-function-object">active function object</a></emu-xref>; else let <var>newTarget</var> be NewTarget.</li><li>Let <var>O</var> be ?&nbsp;<emu-xref aoid="OrdinaryCreateFromConstructor"><a href="https://tc39.es/ecma262/#sec-ordinarycreatefromconstructor">OrdinaryCreateFromConstructor</a></emu-xref>(<var>newTarget</var>, <emu-val>"%SuppressedError.prototype%"</emu-val>, « <var class="field">[[ErrorData]]</var> »).</li><li>If <var>message</var> is not <emu-val>undefined</emu-val>, then<ol><li>Let <var>messageString</var> be ?&nbsp;<emu-xref aoid="ToString"><a href="https://tc39.es/ecma262/#sec-tostring">ToString</a></emu-xref>(<var>message</var>).</li><li>Perform <emu-xref aoid="CreateNonEnumerableDataPropertyOrThrow"><a href="https://tc39.es/ecma262/#sec-createnonenumerabledatapropertyorthrow">CreateNonEnumerableDataPropertyOrThrow</a></emu-xref>(<var>O</var>, <emu-val>"message"</emu-val>, <var>messageString</var>).</li></ol></li><li><del>Perform ?&nbsp;<emu-xref aoid="InstallErrorCause"><a href="https://tc39.es/ecma262/#sec-installerrorcause">InstallErrorCause</a></emu-xref>(<var>O</var>, <var>options</var>).</del></li><li><ins>Perform ?&nbsp;<emu-xref aoid="InstallErrorOwnProperties" id="_ref_3"><a href="#sec-installerrorownproperties">InstallErrorOwnProperties</a></emu-xref>(<var>O</var>, <var>options</var>).</ins></li><li>Perform <emu-xref aoid="CreateNonEnumerableDataPropertyOrThrow"><a href="https://tc39.es/ecma262/#sec-createnonenumerabledatapropertyorthrow">CreateNonEnumerableDataPropertyOrThrow</a></emu-xref>(<var>O</var>, <emu-val>"error"</emu-val>, <var>error</var>).</li><li>Perform <emu-xref aoid="CreateNonEnumerableDataPropertyOrThrow"><a href="https://tc39.es/ecma262/#sec-createnonenumerabledatapropertyorthrow">CreateNonEnumerableDataPropertyOrThrow</a></emu-xref>(<var>O</var>, <emu-val>"suppressed"</emu-val>, <var>suppressed</var>).</li><li>Return <var>O</var>.</li></ol></emu-alg>
+      </emu-clause>
+    </emu-clause>
+  </emu-clause>
+
+  <emu-clause id="sec-error-objects-abstract-operations">
+    <h1><span class="secnum">1.5</span> Abstract Operations for Error Objects</h1>
+
+    <emu-clause id="sec-installerrorownproperties" type="abstract operation" aoid="InstallErrorOwnProperties">
+      <h1><span class="secnum">1.5.1</span> <ins>InstallErrorOwnProperties ( <var>O</var>, <var>options</var> )</ins></h1>
+      <p>The abstract operation InstallErrorOwnProperties takes arguments <var>O</var> (an Object) and <var>options</var> (an <emu-xref href="#sec-ecmascript-language-types"><a href="https://tc39.es/ecma262/#sec-ecmascript-language-types">ECMAScript language value</a></emu-xref>) and returns either a <emu-xref href="#sec-completion-record-specification-type"><a href="https://tc39.es/ecma262/#sec-completion-record-specification-type">normal completion containing</a></emu-xref> <emu-const>unused</emu-const> or a <emu-xref href="#sec-completion-record-specification-type"><a href="https://tc39.es/ecma262/#sec-completion-record-specification-type">throw completion</a></emu-xref>.</p><ins>It is used to create <emu-val>"cause"</emu-val> and <emu-val>"code"</emu-val> properties on <var>O</var> when the corresponding properties are present on <var>options</var>.</ins>
+      <p>It performs the following steps when called:</p>
+      <emu-alg><ol><li><ins>If <var>options</var> <emu-xref href="#sec-object-type"><a href="https://tc39.es/ecma262/#sec-object-type">is an Object</a></emu-xref>, then</ins><ol><li><ins>If ?&nbsp;<emu-xref aoid="HasProperty"><a href="https://tc39.es/ecma262/#sec-hasproperty">HasProperty</a></emu-xref>(<var>options</var>, <emu-val>"cause"</emu-val>) is <emu-val>true</emu-val>, then</ins><ol><li><ins>Let <var>cause</var> be ?&nbsp;<emu-xref aoid="Get"><a href="https://tc39.es/ecma262/#sec-get-o-p">Get</a></emu-xref>(<var>options</var>, <emu-val>"cause"</emu-val>).</ins></li><li><ins>Perform <emu-xref aoid="CreateNonEnumerableDataPropertyOrThrow"><a href="https://tc39.es/ecma262/#sec-createnonenumerabledatapropertyorthrow">CreateNonEnumerableDataPropertyOrThrow</a></emu-xref>(<var>O</var>, <emu-val>"cause"</emu-val>, <var>cause</var>).</ins></li></ol></li><li><ins>If ?&nbsp;<emu-xref aoid="HasProperty"><a href="https://tc39.es/ecma262/#sec-hasproperty">HasProperty</a></emu-xref>(<var>options</var>, <emu-val>"code"</emu-val>) is <emu-val>true</emu-val>, then</ins><ol><li><ins>Let <var>code</var> be ?&nbsp;<emu-xref aoid="Get"><a href="https://tc39.es/ecma262/#sec-get-o-p">Get</a></emu-xref>(<var>options</var>, <emu-val>"code"</emu-val>).</ins></li><li><ins>Perform <emu-xref aoid="CreateNonEnumerableDataPropertyOrThrow"><a href="https://tc39.es/ecma262/#sec-createnonenumerabledatapropertyorthrow">CreateNonEnumerableDataPropertyOrThrow</a></emu-xref>(<var>O</var>, <emu-val>"code"</emu-val>, <var>code</var>).</ins></li></ol></li></ol></li><li><ins>Return <emu-const>unused</emu-const>.</ins></li></ol></emu-alg>
+    </emu-clause>
+  </emu-clause>
 </emu-clause><emu-annex id="sec-copyright-and-software-license" back-matter="">
         <h1>Copyright &amp; Software License</h1>
         
         <div class="copyright-notice" id="copyright-notice"><h2>Copyright Notice</h2>
-<p>© 2025 Your Name(s) Here</p>
+<p>© 2026 James M Snell</p>
 </div>
         <h2>Software License</h2>
         <p>All Software contained in this document ("Software") is protected by copyright and is being made available under the "BSD License", included below. This Software may be subject to third party rights (rights from parties other than Ecma International), including patent rights, and no licenses under such third party rights are granted under this license even if the third party concerned is a member of Ecma International. SEE THE ECMA CODE OF CONDUCT IN PATENT MATTERS AVAILABLE AT <a href="https://ecma-international.org/memento/codeofconduct.htm">https://ecma-international.org/memento/codeofconduct.htm</a> FOR INFORMATION REGARDING THE LICENSING OF PATENT CLAIMS THAT ARE REQUIRED TO IMPLEMENT ECMA INTERNATIONAL STANDARDS.</p>
